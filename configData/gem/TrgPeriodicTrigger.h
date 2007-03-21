@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------
 // File and Version Information:
-//      $Id:  $
+//      $Id: TrgPeriodicTrigger.h,v 1.1.1.1 2007/03/19 23:21:39 kocian Exp $
 //
 // Description:
 //      Periodic Trigger Parameters in GEM configuration
@@ -19,14 +19,20 @@
 #ifndef TRGPERIODICTRIGGER_HH
 #define TRGPERIODICTRIGGER_HH
 #include <iostream>
+#include "configData/base/ConfigTuple.h"
 
-class TrgPeriodicTrigger{
+class TrgPeriodicTrigger : public ConfigBranch {
 public:
   TrgPeriodicTrigger();
   int prescale() const;
   bool onePPS() const;
   bool freeRunning() const;
   int limit() const;
+  // Reset the cached and output values
+  virtual void reset();
+  // Attach this value to a TTree
+  virtual void makeBranch(TTree& tree, const std::string& prefix) const;
+  virtual void attach(TTree& tree, const std::string& prefix) const;
 
 private:
 

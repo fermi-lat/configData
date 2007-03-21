@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------
 // File and Version Information:
-//      $Id:  $
+//      $Id: TrgWindowParams.h,v 1.1.1.1 2007/03/19 23:21:39 kocian Exp $
 //
 // Description:
 //      Trigger window parameters in GEM configuration
@@ -21,15 +21,22 @@
 
 #include "TrgConditions.h"
 #include <iostream>
+#include "configData/base/ConfigTuple.h"
 
-class TrgWindowParams{
+class TrgWindowParams : public ConfigBranch {
   
 public:
   TrgWindowParams();
+  virtual ~TrgWindowParams(){}
   int windowMask() const;
   int windowWidth() const;
   bool maskIncludes(TrgConditions::conditions);
-  
+  // Reset the cached and output values
+  virtual void reset(){_windowmask=0;_winwidth=0;}
+  // Attach this value to a TTree
+  virtual void makeBranch(TTree& tree, const std::string& prefix) const;
+  virtual void attach(TTree& tree, const std::string& prefix) const;
+
 private:
   friend class TrgConfigParser;
 
