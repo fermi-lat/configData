@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------
 // File and Version Information:
-//      $Id: TrgDisabledChannels.cxx,v 1.1.1.1 2007/03/19 23:21:39 kocian Exp $
+//      $Id: TrgDisabledChannels.cxx,v 1.2 2007/03/21 00:26:40 echarles Exp $
 //
 // Description:
 //      Disabled channels in GEM configuration
@@ -55,7 +55,7 @@ void TrgDisabledChannels::setCnoRegister( unsigned val){
   _cno=val&0xfff;
 }
 void TrgDisabledChannels::setBusyRegister( unsigned val){
-  _busy=val&0xff;
+  _busy=val&0xffff;
 }
 void TrgDisabledChannels::setExternal( unsigned val){
   _external=(bool)val;

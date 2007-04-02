@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------
 // File and Version Information:
-//      $Id: TrgConfLUT.cxx,v 1.1.1.1 2007/03/19 23:21:39 kocian Exp $
+//      $Id: TrgConfLUT.cxx,v 1.2 2007/03/21 00:26:40 echarles Exp $
 //
 // Description:
 //      GEM LUT class
@@ -73,10 +73,12 @@ void TrgConfLUT::attach(TTree& tree, const std::string& prefix) const {
 
 
 std::ostream& operator <<(std::ostream& os, const TrgConfLUT& tc){
+  os<<"Lookup-table registers:"<<std::endl;
   os<<std::hex<<std::setfill('0');
   for (int i=0;i<NREG;i++){
     os<<std::setw(CONDSREG)<<tc.reg(i)<<" ";
     if (i%CONDSREG==CONDSREG - 1)os<<std::endl;
   }
   os<<std::dec;
+  return os;
 }

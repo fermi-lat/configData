@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------
 // File and Version Information:
-//      $Id: TrgConfig.h,v 1.2 2007/03/21 00:26:37 echarles Exp $
+//      $Id: TrgConfig.h,v 1.3 2007/03/28 21:21:01 kocian Exp $
 //
 // Description:
 //      A top level GEM configuration class 
@@ -68,6 +68,8 @@ private:
   TrgRoi _roi;
 };
 
+/// printout function  
+std::ostream& operator <<(std::ostream &os, const TrgConfig& tl);
 
 
 

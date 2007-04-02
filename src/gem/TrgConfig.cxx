@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------
 // File and Version Information:
-//      $Id: TrgConfig.cxx,v 1.1.1.1 2007/03/19 23:21:39 kocian Exp $
+//      $Id: TrgConfig.cxx,v 1.2 2007/03/21 00:26:40 echarles Exp $
 //
 // Description:
 //      A top level GEM configuration class 
@@ -29,6 +29,17 @@ void TrgConfig::reset() {
   _tdv.reset();
   _configuration.reset();
   _roi.reset();  
+}
+std::ostream& operator <<(std::ostream &os, const TrgConfig& tl){
+  os<<"GEM configuration: ";
+  os<<*tl.configuration()<<std::endl;
+  os<<*tl.windowParams()<<std::endl;
+  os<<*tl.periodicTrigger()<<std::endl;
+  os<<*tl.lut()<<std::endl;
+  os<<*tl.trgEngine()<<std::endl;
+  os<<*tl.disabledChannels()<<std::endl;
+  os<<*tl.roi()<<std::endl;
+  return os;
 }
 
 // Attach this value to a TTree

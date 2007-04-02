@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------
 // File and Version Information:
-//      $Id: TrgConfiguration.cxx,v 1.1.1.1 2007/03/19 23:21:39 kocian Exp $
+//      $Id: TrgConfiguration.cxx,v 1.2 2007/03/21 00:26:40 echarles Exp $
 //
 // Description:
 //      A GEM configuration register class 
@@ -56,6 +56,6 @@ void TrgConfiguration::attach(TTree& tree, const std::string& prefix) const {
 std::ostream& operator <<(std::ostream& os,  const TrgConfiguration& tc){
   if(tc.acdUsedAsTrigger())os<<"ACD used as trigger"<<std::endl;
   else os<<"ACD used as veto"<<std::endl;
-  os<<"Trigger word "<<std::hex<<tc.configuration()<<std::dec<<std::endl;
+  os<<"Configuration register: "<<std::hex<<tc.configuration()<<std::dec<<std::endl;
   return os;
 }

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------
 // File and Version Information:
-//      $Id: TrgEngine.cxx,v 1.1.1.1 2007/03/19 23:21:39 kocian Exp $
+//      $Id: TrgEngine.cxx,v 1.2 2007/03/21 00:26:40 echarles Exp $
 //
 // Description:
 //      A trigger engine configuration class
@@ -109,6 +109,7 @@ void TrgEngine::attach(TTree& tree, const std::string& prefix) const {
 
 std::ostream& operator <<(std::ostream& os, const TrgEngine& tc){
   for (int i(0); i < 16; i++ ) {
+    os<<"Engine "<<i<<": ";
     if (tc.calstrobe(i))os<<"Calstrobe ";
     if (tc.tack(i))os<<"Tack ";
     if (tc.inhibited(i))os<<"Inhibit ";
@@ -118,6 +119,7 @@ std::ostream& operator <<(std::ostream& os, const TrgEngine& tc){
     if (tc.destination(i)!=0)os<<"Destination="<<tc.destination(i)<<" ";
     if (tc.zeroSuppression(i))os<<"0-suppression ";
     if (tc.fourRangeReadout(i))os<<"4-range-readout ";
+    os<<std::endl;
   }
   return os;
 }

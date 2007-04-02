@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------
 // File and Version Information:
-//      $Id: TrgWindowParams.cxx,v 1.1.1.1 2007/03/19 23:21:39 kocian Exp $
+//      $Id: TrgWindowParams.cxx,v 1.2 2007/03/21 00:26:40 echarles Exp $
 //
 // Description:
 //      Trigger window parameters in GEM configuration
@@ -82,4 +82,5 @@ std::ostream& operator <<(std::ostream &os, const TrgWindowParams& tl){
   }
   os<<std::endl;
   os<<"Window width: "<<tl.windowWidth()<<std::endl;
+  return os;
 }
