@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------
 // File and Version Information:
-//      $Id: TrgConfLUT.cxx,v 1.2 2007/03/21 00:26:40 echarles Exp $
+//      $Id: TrgConfLUT.cxx,v 1.3 2007/04/02 18:34:40 kocian Exp $
 //
 // Description:
 //      GEM LUT class
@@ -58,6 +58,8 @@ void TrgConfLUT::reset() {
   }
 }
 
+
+
 // Attach this value to a TTree
 void TrgConfLUT::makeBranch(TTree& tree, const std::string& prefix) const {
   std::string branchName = prefix; branchName += name();
@@ -70,7 +72,6 @@ void TrgConfLUT::attach(TTree& tree, const std::string& prefix) const {
   std::string branchName = prefix; branchName += name();
   tree.SetBranchAddress(branchName.c_str(),(void*)(_lut));
 }
-
 
 std::ostream& operator <<(std::ostream& os, const TrgConfLUT& tc){
   os<<"Lookup-table registers:"<<std::endl;

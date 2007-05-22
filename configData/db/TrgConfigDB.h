@@ -3,7 +3,7 @@
 
     A simple DB class for TrgConfig
 
-    $Id: $
+    $Id: TrgConfigDB.h,v 1.1 2007/04/02 20:23:15 kocian Exp $
 */
 #ifndef TRGCONFIGDB_H
 #define TRGCONFIGDB_H
@@ -15,9 +15,11 @@ class TrgConfigDB:public TrgConfig{
  public:
   /// Constructor with the DB interface implementation as the argument
   TrgConfigDB(LatcDB* lc);
+  /// Virtual destructor
+  virtual ~TrgConfigDB(){}
   /// Check if we need to parse a new object, parse it if necessary
-  int updateKey(unsigned key);
- private:
+  bool updateKey(const unsigned int key);
+ protected:
   LatcDB* m_lc;
   unsigned m_key;
 };
