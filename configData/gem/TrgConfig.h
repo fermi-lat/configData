@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------
 // File and Version Information:
-//      $Id: TrgConfig.h,v 1.4 2007/04/02 18:34:39 kocian Exp $
+//      $Id: TrgConfig.h,v 1.5 2007/05/22 21:38:39 kocian Exp $
 //
 // Description:
 //      A top level GEM configuration class 
@@ -54,7 +54,7 @@ public:
   /// Return the object that holds the ROI configuration
   const TrgRoi* roi() const {return &_roi;}
   /// Print LUT in contrigurator format
-  virtual void printContrigurator() const;
+  virtual void printContrigurator(std::ostream& out) const;
 
   /// Reset the cached and output values
   void reset();
