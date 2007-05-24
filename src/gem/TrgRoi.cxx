@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------
 // File and Version Information:
-//      $Id: TrgRoi.cxx,v 1.1.1.1 2007/03/19 23:21:39 kocian Exp $
+//      $Id: TrgRoi.cxx,v 1.2 2007/03/21 00:26:40 echarles Exp $
 //
 // Description:
 //      A GEM ROI register class 
@@ -20,6 +20,7 @@
 #include <iomanip>
 #include "commonRootData/idents/AcdId.h"
 #include "TTree.h"
+#include <algorithm> 
 
 TrgRoi::TrgRoi()
   :ConfigBranch("r",'i',ChannelKey(54)){  
