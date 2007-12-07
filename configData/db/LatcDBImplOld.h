@@ -4,7 +4,7 @@
 
     Implementation to retrieve a filename from MOOT (using an old function that will be replaced soon.
 
-    $Id: $
+    $Id: LatcDBImplOld.h,v 1.1 2007/04/02 20:23:15 kocian Exp $
 */
 #ifndef LATCDBIMPLOLD_H
 #define LATCDBIMPLOLD_H
@@ -21,6 +21,8 @@ class LatcDBImplOld:public LatcDB{
   LatcDBImplOld();
   /// function to retrieve filename of type type given key key.
   const std::string getFilename(const char* type, unsigned key);
+  /// function to retrieve the list of filenames
+  const std::vector<std::string> getFilenameList(unsigned key);
  private:
   MootQuery* m_mq;
 };
