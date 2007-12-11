@@ -3,7 +3,7 @@
 
     A simple DB class for TrgConfig
 
-    $Id: TrgConfigDB.h,v 1.1 2007/04/02 20:23:15 kocian Exp $
+    $Id: TrgConfigDB.h,v 1.2 2007/05/22 21:38:38 kocian Exp $
 */
 #ifndef TRGCONFIGDB_H
 #define TRGCONFIGDB_H
@@ -19,9 +19,15 @@ class TrgConfigDB:public TrgConfig{
   virtual ~TrgConfigDB(){}
   /// Check if we need to parse a new object, parse it if necessary
   bool updateKey(const unsigned int key);
+  /// Allow partial configurations to be used
+  void allowMissing(bool allow);
+  /// Allowing partial configs?
+  bool allowingMissing(){return m_allowMissing;}
+  
  protected:
   LatcDB* m_lc;
   unsigned m_key;
+  bool m_allowMissing;
 };
     
   
