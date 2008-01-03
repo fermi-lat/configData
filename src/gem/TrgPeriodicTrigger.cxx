@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------
 // File and Version Information:
-//      $Id: TrgPeriodicTrigger.cxx,v 1.1.1.1 2007/03/19 23:21:39 kocian Exp $
+//      $Id: TrgPeriodicTrigger.cxx,v 1.2 2007/03/21 00:26:40 echarles Exp $
 //
 // Description:
 //      Periodic Trigger Parameters in GEM configuration
@@ -104,7 +104,9 @@ void TrgPeriodicTrigger::attach(TTree& tree, const std::string& prefix) const {
 
 std::ostream& operator <<(std::ostream &os, const TrgPeriodicTrigger& tl){
 
-  os<<"Periodic prescale: "<<tl.prescale()<<std::endl;
+  os<<"Periodic prescale: "<<tl.prescale();
+  if (tl.onePPS())os<<" ("<<1./tl.prescale()<<" Hz)"<<std::endl;
+  else  os<<" ("<<20.e6/tl.prescale()<<" Hz)"<<std::endl;
   os<<"1PPS: ";
   if (tl.onePPS())os<<"True"<<std::endl;
   else os<<"False"<<std::endl;

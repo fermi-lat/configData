@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------
 // File and Version Information:
-//      $Id: TrgWindowParams.cxx,v 1.2 2007/03/21 00:26:40 echarles Exp $
+//      $Id: TrgWindowParams.cxx,v 1.3 2007/04/02 18:34:40 kocian Exp $
 //
 // Description:
 //      Trigger window parameters in GEM configuration
@@ -79,6 +79,11 @@ std::ostream& operator <<(std::ostream &os, const TrgWindowParams& tl){
   os<<"Window open mask: ";
   for (int i=0;i<NCOND;i++){
     if ((1<<i)&tl.windowMask())os<<TrgConditions::condName((TrgConditions::conditions)i)<<" ";
+  }
+  os<<std::endl;
+  os<<"Complement of the window open mask: ";
+  for (int i=0;i<NCOND;i++){
+    if (!((1<<i)&tl.windowMask()))os<<TrgConditions::condName((TrgConditions::conditions)i)<<" ";
   }
   os<<std::endl;
   os<<"Window width: "<<tl.windowWidth()<<std::endl;
