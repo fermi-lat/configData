@@ -11,8 +11,8 @@ __facility__ = "Online"
 __abstract__ = "MOOT config reporting base classes"
 __author__   = "J. Panetta <panetta@SLAC.Stanford.edu> SLAC - GLAST LAT I&T/Online"
 __date__     = "2008/01/25 00:00:00"
-__updated__  = "$Date: 2008/01/31 21:22:54 $"
-__version__  = "$Revision: 1.1 $"
+__updated__  = "$Date: 2008/02/01 01:43:43 $"
+__version__  = "$Revision: 1.2 $"
 __release__  = "$Name:  $"
 __credits__  = "SLAC"
 
@@ -84,9 +84,10 @@ class ConfigDataHolder(object):
                 os.mkdir(self.__confDir)
             except OSError, e:
                 _log.error("ConfigReport failed in creating the configuration directory %s." % self.__confDir)
+                sys.exit(-1)
             except Exception, e:
                 _log.error("An unknown error: '%s' occurred ConfigReport.__init__" % e)
-            sys.exit(-1)
+                sys.exit(-1)
 
     @property
     def db(self):
