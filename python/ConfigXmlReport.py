@@ -11,8 +11,8 @@ __facility__ = "Online"
 __abstract__ = "MOOT config reporting base classes"
 __author__   = "J. Panetta <panetta@SLAC.Stanford.edu> SLAC - GLAST LAT I&T/Online"
 __date__     = "2008/01/25 00:00:00"
-__updated__  = "$Date: 2008/01/31 21:22:54 $"
-__version__  = "$Revision: 1.1 $"
+__updated__  = "$Date: 2008/02/01 01:45:28 $"
+__version__  = "$Revision: 1.2 $"
 __release__  = "$Name:  $"
 __credits__  = "SLAC"
 
@@ -251,6 +251,7 @@ def optparse():
 if __name__ == '__main__':
     import sys
 
+    options, args = optparse()
     setLogging(options.verbose)    
     makePrecinctHandlers()
     holder = ConfigDataHolder(options.configKey,
