@@ -11,8 +11,8 @@ __facility__ = "Online"
 __abstract__ = "MOOT config reporting base classes"
 __author__   = "J. Panetta <panetta@SLAC.Stanford.edu> SLAC - GLAST LAT I&T/Online"
 __date__     = "2008/01/25 00:00:00"
-__updated__  = "$Date: 2008/02/01 02:08:56 $"
-__version__  = "$Revision: 1.3 $"
+__updated__  = "$Date: 2008/02/01 21:17:56 $"
+__version__  = "$Revision: 1.4 $"
 __release__  = "$Name:  $"
 __credits__  = "SLAC"
 
@@ -162,6 +162,13 @@ def makePrecinctHandlers():
     PRECINCT_HANDLERS["TKR_Strips"] = TkrStripsXmlReport
     PRECINCT_HANDLERS["TKR_Thresh"] = TkrThreshXmlReport
     PRECINCT_HANDLERS["TKR_Timing"] = TkrTimingXmlReport
+    from AcdXmlReport import AcdBiasXmlReport, AcdHldXmlReport, AcdModeXmlReport, AcdPHAXmlReport, AcdTimingXmlReport, AcdVetoXmlReport ## These are now trivial implementations and the base class would do below
+    PRECINCT_HANDLERS["ACD_Bias"] = AcdBiasXmlReport
+    PRECINCT_HANDLERS["ACD_Hld"] = AcdHldXmlReport
+    PRECINCT_HANDLERS["ACD_Mode"] = AcdModeXmlReport
+    PRECINCT_HANDLERS["ACD_PHA"] = AcdPHAXmlReport
+    PRECINCT_HANDLERS["ACD_Veto"] = AcdVetoXmlReport
+    PRECINCT_HANDLERS["ACD_Timing"] = AcdTimingXmlReport
 
 
 
