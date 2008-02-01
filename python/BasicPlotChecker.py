@@ -11,8 +11,8 @@ __facility__ = "Online"
 __abstract__ = "Just grab some subsystem config plots and make png files"
 __author__   = "P.A.Hart <philiph@SLAC.Stanford.edu> SLAC - GLAST LAT I&T/Online"
 __date__     = "2008/02/01 00:00:00"
-__updated__  = "$Date: 2008/02/01 02:12:47 $"
-__version__  = "$Revision: $"
+__updated__  = "$Date: 2008/02/01 22:50:54 $"
+__version__  = "$Revision: 1.1 $"
 __release__  = "$Name:  $"
 __credits__  = "SLAC"
 
@@ -74,8 +74,12 @@ class BasicPlotChecker(object):
     for (precinct, plot, title, caption, option) in self.plotSelection:
       if self.__precinctName == precinct or self.__precinctName == 'all':
         if option == 'comp':
-          compRootFile.Get(plot).Draw()
-          self.savePng(plot+".png", title, caption)
+          histo = compRootFile.Get(plot)
+          if histo is not None:
+            compRootFile.Get(plot).Draw()
+            self.savePng(plot+".png", title, caption)
+          else:
+            raise RuntimeError, 'No plot named %s in %s' %(plot, self.__compareRootFile)
         else:
           if self.__configurationRootFile is None or self.__baseRootFile is None:
             print 'unable to plot base/conf overlay plot - no root file defined'
