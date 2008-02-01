@@ -11,8 +11,8 @@ __facility__ = "Online"
 __abstract__ = "MOOT config reporting base classes"
 __author__   = "J. Panetta <panetta@SLAC.Stanford.edu> SLAC - GLAST LAT I&T/Online"
 __date__     = "2008/01/25 00:00:00"
-__updated__  = "$Date: 2008/02/01 02:14:07 $"
-__version__  = "$Revision: 1.3 $"
+__updated__  = "$Date: 2008/02/01 21:15:31 $"
+__version__  = "$Revision: 1.4 $"
 __release__  = "$Name:  $"
 __credits__  = "SLAC"
 
@@ -141,7 +141,7 @@ class ConfigDataHolder(object):
 
     def compareRootFileName(self, rebuild=False):
         "!@brief return the config/baseline comparison ROOT file name.  rebuild if necessary."
-        if self.__compRoot and not rebuild: return None
+        if self.__compRoot and not rebuild: return self.__compRoot
         if not self.configRootFileName(rebuild): return None
         if not self.baselineRootFileName(rebuild): return None
         from RootRptGenerator import compareLatcRoot
@@ -165,7 +165,7 @@ if __name__ == '__main__':
     rebuild = False
 
     cr = ConfigDataHolder(testKey, baselineKey, './')
-    print cr.configRootFileName(srebuild)
+    print cr.configRootFileName(rebuild)
     print cr.baselineRootFileName(rebuild)
     print cr.compareRootFileName(rebuild)
 
