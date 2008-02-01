@@ -8,11 +8,11 @@
 #
 
 __facility__ = "Online"
-__abstract__ = "MOOT config reporting base classes"
-__author__   = "J. Panetta <panetta@SLAC.Stanford.edu> SLAC - GLAST LAT I&T/Online"
+__abstract__ = "Tkr config reporting classes"
+__author__   = "P.A.Hart <philiph@SLAC.Stanford.edu> SLAC - GLAST LAT I&T/Online"
 __date__     = "2008/01/25 00:00:00"
-__updated__  = "$Date: 2007/12/19 01:22:23 $"
-__version__  = "$Revision: 1.2 $"
+__updated__  = "$Date: 2008/02/01 02:08:26 $"
+__version__  = "$Revision: 1.1 $"
 __release__  = "$Name:  $"
 __credits__  = "SLAC"
 
