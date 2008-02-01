@@ -11,8 +11,8 @@ __facility__ = "Online"
 __abstract__ = "MOOT config reporting base classes"
 __author__   = "J. Panetta <panetta@SLAC.Stanford.edu> SLAC - GLAST LAT I&T/Online"
 __date__     = "2008/01/25 00:00:00"
-__updated__  = "$Date: 2007/12/19 01:22:23 $"
-__version__  = "$Revision: 1.2 $"
+__updated__  = "$Date: 2008/01/31 21:22:54 $"
+__version__  = "$Revision: 1.1 $"
 __release__  = "$Name:  $"
 __credits__  = "SLAC"
 
@@ -128,18 +128,12 @@ class PrecinctXmlReport(PrecinctReport):
                 setAttribute(n, ATTR_TEXT, line)
                 count += 1
 
-
-
     def writeReport(self):
-        fileName = os.path.join(self.data.configDir, '%s_report.xml'%self.info.getPrecinct() )
-        f = open(fileName, 'w')
+        fileName = '%s_report.xml'%self.info.getPrecinct()
+        f = open(os.path.join(self.data.configDir, fileName), 'w')
         PrettyPrint(self.__doc,f)
         f.close()
         return fileName
-
-
-
-    
 
 
 if __name__ == '__main__':
