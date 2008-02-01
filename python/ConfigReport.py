@@ -11,17 +11,17 @@ __facility__ = "Online"
 __abstract__ = "MOOT config reporting base classes"
 __author__   = "J. Panetta <panetta@SLAC.Stanford.edu> SLAC - GLAST LAT I&T/Online"
 __date__     = "2008/01/25 00:00:00"
-__updated__  = "$Date: 2007/12/19 01:22:23 $"
-__version__  = "$Revision: 1.2 $"
+__updated__  = "$Date: 2008/01/31 21:22:54 $"
+__version__  = "$Revision: 1.1 $"
 __release__  = "$Name:  $"
 __credits__  = "SLAC"
 
 import logging
-import os
+import os, sys
 
 from py_mootCore import MootQuery
 
-_log = logging.getLogger('offline.configData')
+_log = logging.getLogger()
 
 
 class ConfigReportError(Exception):
@@ -86,6 +86,7 @@ class ConfigDataHolder(object):
                 _log.error("ConfigReport failed in creating the configuration directory %s." % self.__confDir)
             except Exception, e:
                 _log.error("An unknown error: '%s' occurred ConfigReport.__init__" % e)
+            sys.exit(-1)
 
     @property
     def db(self):
