@@ -11,8 +11,8 @@ __facility__ = "Online"
 __abstract__ = "Run root macro, get text"
 __author__   = "P.A.Hart <philiph@SLAC.Stanford.edu> SLAC - GLAST LAT I&T/Online"
 __date__     = "2008/02/01 00:00:00"
-__updated__  = "$Date: 2008/02/01 23:50:31 $"
-__version__  = "$Revision: $"
+__updated__  = "$Date: 2008/02/02 02:09:43 $"
+__version__  = "$Revision: 1.1 $"
 __release__  = "$Name:  $"
 __credits__  = "SLAC"
 
@@ -30,9 +30,9 @@ class BasicRootMacroRunner(object):
     
   def doChecks(self):
     if self.__outputFile:
-      cmd = "root  -b -q 'dumpPrecinct.C(\"%s\", \"%s\")' > %s" %(self.__configurationRootFile, self.__precinctName,self.__outputFile)
+      cmd = "root  -l -b -q 'dumpPrecinct.C(\"%s\", \"%s\")' > %s" %(self.__configurationRootFile, self.__precinctName,self.__outputFile)
     else:
-      cmd = "root  -b -q 'dumpPrecinct.C(\"%s\", \"%s\")'" %(self.__configurationRootFile, self.__precinctName)
+      cmd = "root  -l -b -q 'dumpPrecinct.C(\"%s\", \"%s\")'" %(self.__configurationRootFile, self.__precinctName)
     print cmd
     os.system(cmd) ## do something smarter
     
