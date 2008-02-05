@@ -11,8 +11,8 @@ __facility__ = "Online"
 __abstract__ = "MOOT config reporting base classes"
 __author__   = "J. Panetta <panetta@SLAC.Stanford.edu> SLAC - GLAST LAT I&T/Online"
 __date__     = "2008/01/25 00:00:00"
-__updated__  = "$Date: 2008/02/01 23:53:37 $"
-__version__  = "$Revision: 1.5 $"
+__updated__  = "$Date: 2008/02/02 02:09:43 $"
+__version__  = "$Revision: 1.6 $"
 __release__  = "$Name:  $"
 __credits__  = "SLAC"
 
@@ -45,7 +45,7 @@ TAG_PRECINCTS  = "Precincts"
 TAG_PRECINCT   = "PrecinctReportLink"
 TAG_COMMENT    = "Comment"
 TAG_INTENT     = "Intent"
-             
+TAG_LINKTO     = "LinkTo"
 
 ATTR_CKEY      = "ConfigKey"
 ATTR_BKEY      = "BaselineKey"
@@ -60,6 +60,7 @@ ATTR_NAME      = "Name"
 ATTR_FILELINK  = "FileLink"
 ATTR_VKEY      = "VoteKey"
 ATTR_FNAME     = "FileName"
+ATTR_NOCONV    = "NoConvert"
 
 PRECINCT_HANDLERS = {}
 
@@ -247,6 +248,10 @@ def optparse():
                       type="string", help="Destination directory for config reports")
     expert.add_option("--xslTransform", dest="xslTransform", action="store",
                       type="string", help="Use a different transform file")
+    expert.add_option("--noRebuild", dest="rebuild", action="store_false",
+                      help="do rebuild")
+
+    parser.set_defaults(rebuild=True)
     parser.set_defaults(configDir=CONFIG_DEST_PRODUCTION)
     #parser.set_defaults(configDir=CONFIG_DEST_JIMTEST)
     parser.set_defaults(xslTransform=CONFIG_XSL_TRANSFORM)
@@ -270,11 +275,12 @@ if __name__ == '__main__':
     cr = ConfigXmlReport(holder)
     cr.createReport()
     xmlName = cr.writeReport()
-    print xmlName
+
     transformToFile(options.xslTransform,
                     os.path.join(holder.configDir, xmlName),
                     os.path.join(holder.configDir, xmlName[:-3]+"html"))
     for pR in cr.precinctXml():
+        print pR
         transformToFile(options.xslTransform,
                         os.path.join(holder.configDir, pR),
                         os.path.join(holder.configDir, pR[:-3]+"html"))
