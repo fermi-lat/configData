@@ -11,8 +11,8 @@ __facility__ = "Online"
 __abstract__ = "Tkr register checking/comparing code, based on Hiro's work"
 __author__   = "P.A.Hart <philiph@SLAC.Stanford.edu> SLAC - GLAST LAT I&T/Online"
 __date__     = "2008/01/25 00:00:00"
-__updated__  = "$Date: 2008/02/05 22:37:18 $"
-__version__  = "$Revision: 1.3 $"
+__updated__  = "$Date: 2008/02/06 19:47:41 $"
+__version__  = "$Revision: 1.4 $"
 __release__  = "$Name:  $"
 __credits__  = "SLAC"
 
@@ -201,8 +201,10 @@ class TkrRegisterChecker(object):
       self.closeOutputFile()
       
   def ingestRoot(self, base, comp):
-    self.rFiles.append(ROOT.TFile(comp))
-    self.rFiles.append(ROOT.TFile(base))
+    if comp:
+      self.rFiles.append(ROOT.TFile(comp))
+    if base:
+      self.rFiles.append(ROOT.TFile(base))
     
   def checkValues(self, key, varray, registerMethod):## revisit to divide into compValues and CompVsRef
     self.__resetLogs() ## revisit - may not be the right idea
