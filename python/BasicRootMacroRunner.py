@@ -11,8 +11,8 @@ __facility__ = "Online"
 __abstract__ = "Run root macro, get text"
 __author__   = "P.A.Hart <philiph@SLAC.Stanford.edu> SLAC - GLAST LAT I&T/Online"
 __date__     = "2008/02/01 00:00:00"
-__updated__  = "$Date: 2008/02/06 01:45:24 $"
-__version__  = "$Revision: 1.3 $"
+__updated__  = "$Date: 2008/02/06 21:12:38 $"
+__version__  = "$Revision: 1.5 $"
 __release__  = "$Name:  $"
 __credits__  = "SLAC"
 
@@ -44,15 +44,11 @@ class BasicRootMacroRunner(object):
       self.htmlize(out+err, self.__outputFile)
 
   def htmlize(self, lines, outFile):
-    #fp = open(inFile, 'r')
-    #lines = fp.readlines()
-    #fp.close()
     fp = open(outFile, 'w')
     for line in lines:
       formattedLine = re.sub(" ", "&nbsp;", line)
       formattedLine = re.sub("font&nbsp;", "font ", formattedLine)
-      formattedLine = re.sub("\n", "<br>", formattedLine)
-      fp.write('%s\n' %(formattedLine))
+      fp.write('%s<br>\n' %(formattedLine))
     fp.close()
     
   def write(self, msg):
