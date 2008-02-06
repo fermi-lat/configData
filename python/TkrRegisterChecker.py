@@ -11,8 +11,8 @@ __facility__ = "Online"
 __abstract__ = "Tkr register checking/comparing code, based on Hiro's work"
 __author__   = "P.A.Hart <philiph@SLAC.Stanford.edu> SLAC - GLAST LAT I&T/Online"
 __date__     = "2008/01/25 00:00:00"
-__updated__  = "$Date: 2008/02/01 02:12:47 $"
-__version__  = "$Revision: 1.2 $"
+__updated__  = "$Date: 2008/02/05 22:37:18 $"
+__version__  = "$Revision: 1.3 $"
 __release__  = "$Name:  $"
 __credits__  = "SLAC"
 
@@ -144,6 +144,8 @@ class TkrRegisterChecker(object):
     self.__maxErrors = 10
     self.__maxWarns = 10
     self.__maxInfos = 10
+    print dir(ROOT)
+    ROOT.gROOT.SetBatch(True)
     
   def __resetLogs(self):
     self.errors = []
