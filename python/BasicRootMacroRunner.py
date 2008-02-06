@@ -11,8 +11,8 @@ __facility__ = "Online"
 __abstract__ = "Run root macro, get text"
 __author__   = "P.A.Hart <philiph@SLAC.Stanford.edu> SLAC - GLAST LAT I&T/Online"
 __date__     = "2008/02/01 00:00:00"
-__updated__  = "$Date: 2008/02/02 02:09:43 $"
-__version__  = "$Revision: 1.1 $"
+__updated__  = "$Date: 2008/02/04 21:03:14 $"
+__version__  = "$Revision: 1.2 $"
 __release__  = "$Name:  $"
 __credits__  = "SLAC"
 
@@ -21,6 +21,8 @@ __credits__  = "SLAC"
 
 import ROOT
 import os  ## drop
+import time, re
+from RootRptGenerator import SystemCommand
 
 class BasicRootMacroRunner(object):
   def __init__(self, precinctName, configurationRootFile=None, outputFile=None):
@@ -29,12 +31,30 @@ class BasicRootMacroRunner(object):
     self.__outputFile = outputFile
     
   def doChecks(self):
+    tmpFile = "/tmp/rootOutput_%d.tmp" %(int(time.time()*1000000))
     if self.__outputFile:
-      cmd = "root  -l -b -q 'dumpPrecinct.C(\"%s\", \"%s\")' > %s" %(self.__configurationRootFile, self.__precinctName,self.__outputFile)
+      fp = open(tmpFile, 'w')
+      cmd = "root  -l -b -q 'dumpPrecinct.C(\"%s\", \"%s\")' > %s" %(self.__configurationRootFile, self.__precinctName, tmpFile)
+      fp.close()
     else:
       cmd = "root  -l -b -q 'dumpPrecinct.C(\"%s\", \"%s\")'" %(self.__configurationRootFile, self.__precinctName)
-    print cmd
-    os.system(cmd) ## do something smarter
+##    print cmd
+##    SystemCommand(cmd)
+    os.system(cmd)
+    if self.__outputFile:
+      self.htmlize(tmpFile, self.__outputFile)
+
+  def htmlize(self, inFile, outFile):
+    fp = open(inFile, 'r')
+    lines = fp.readlines()
+    fp.close()
+    fp = open(outFile, 'w')
+    for line in lines:
+      formattedLine = re.sub(" ", "&nbsp;", line)
+      formattedLine = re.sub("font&nbsp;", "font ", formattedLine)
+      formattedLine = re.sub("\n", "<br>", formattedLine)
+      fp.write('%s\n' %(formattedLine))
+    fp.close()
     
   def write(self, msg):
     if self.__outputFile:
