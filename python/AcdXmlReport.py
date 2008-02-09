@@ -11,14 +11,14 @@ __facility__ = "Online"
 __abstract__ = "ACD config reporting classes"
 __author__   = "P.A.Hart <philiph@SLAC.Stanford.edu> SLAC - GLAST LAT I&T/Online"
 __date__     = "2008/01/25 00:00:00"
-__updated__  = "$Date: 2008/02/01 23:49:49 $"
-__version__  = "$Revision: 1.2 $"
+__updated__  = "$Date: 2008/02/06 23:13:56 $"
+__version__  = "$Revision: 1.3 $"
 __release__  = "$Name:  $"
 __credits__  = "SLAC"
 
 import logging
 
-from PrecinctReport import *
+from ConfigXmlReport import *
 from RootRptGenerator import SystemCommand
 from AcdPlotChecker import *
 

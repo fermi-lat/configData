@@ -11,14 +11,14 @@ __facility__ = "Online"
 __abstract__ = "Cal config reporting classes"
 __author__   = "Z. Fewtrell based on TkrXmlReport by P.A.Hart <philiph@SLAC.Stanford.edu> SLAC - GLAST LAT I&T/Online"
 __date__     = "2008/01/25 00:00:00"
-__updated__  = "$Date: 2008/02/01 02:12:47 $"
-__version__  = "$Revision: 1.2 $"
+__updated__  = "$Date: 2008/02/09 00:34:44 $"
+__version__  = "$Revision: 1.1 $"
 __release__  = "$Name:  $"
 __credits__  = "SLAC"
 
 import logging
 
-from PrecinctReport import *
+from ConfigXmlReport import *
 from RootRptGenerator import SystemCommand
 from CalPrecinctReport import *
 

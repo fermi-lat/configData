@@ -11,14 +11,14 @@ __facility__ = "Online"
 __abstract__ = "Timing config reporting classes"
 __author__   = "P.A.Hart <philiph@SLAC.Stanford.edu> SLAC - GLAST LAT I&T/Online"
 __date__     = "2008/01/25 00:00:00"
-__updated__  = "$Date: 2008/02/06 01:45:24 $"
-__version__  = "$Revision: 1.2 $"
+__updated__  = "$Date: 2008/02/09 00:41:31 $"
+__version__  = "$Revision: 1.3 $"
 __release__  = "$Name:  $"
 __credits__  = "SLAC"
 
 import logging
 
-from PrecinctReport import *
+from ConfigXmlReport import *
 from RootRptGenerator import SystemCommand
 from BasicRootMacroRunner import *
 

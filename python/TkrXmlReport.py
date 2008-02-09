@@ -11,14 +11,14 @@ __facility__ = "Online"
 __abstract__ = "Tkr config reporting classes"
 __author__   = "P.A.Hart <philiph@SLAC.Stanford.edu> SLAC - GLAST LAT I&T/Online"
 __date__     = "2008/01/25 00:00:00"
-__updated__  = "$Date: 2008/02/01 02:12:47 $"
-__version__  = "$Revision: 1.2 $"
+__updated__  = "$Date: 2008/02/05 22:37:53 $"
+__version__  = "$Revision: 1.3 $"
 __release__  = "$Name:  $"
 __credits__  = "SLAC"
 
 import logging
 
-from PrecinctReport import *
+from ConfigXmlReport import *
 from RootRptGenerator import SystemCommand
 from TkrRegisterChecker import *
 TMP_BASE_ROOT = '/scratch/philiph/offline/offlineConfig/configData/v1r6p2/rhel4_gcc34/MootConfig_5881.root'
