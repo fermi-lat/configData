@@ -11,8 +11,8 @@ __facility__ = "Online"
 __abstract__ = "MOOT config reporting base classes"
 __author__   = "J. Panetta <panetta@SLAC.Stanford.edu> SLAC - GLAST LAT I&T/Online"
 __date__     = "2008/01/25 00:00:00"
-__updated__  = "$Date: 2008/02/02 02:09:43 $"
-__version__  = "$Revision: 1.6 $"
+__updated__  = "$Date: 2008/02/05 22:35:16 $"
+__version__  = "$Revision: 1.7 $"
 __release__  = "$Name:  $"
 __credits__  = "SLAC"
 
@@ -173,7 +173,14 @@ def makePrecinctHandlers():
     PRECINCT_HANDLERS["GNL_Timing"] = GnlTimingXmlReport
     PRECINCT_HANDLERS["CAL_Timing"] = CalTimingXmlReport
     PRECINCT_HANDLERS["TKR_Timing"] = TkrTimingXmlReport
-
+    # Cal reports
+    from CalXmlReport import CalLacXmlReport, CalFleXmlReport, CalFheXmlReport, CalUldXmlReport, CalModeXmlReport
+    PRECINCT_HANDLERS["CAL_LAC"]    = CalLacXmlReport
+    PRECINCT_HANDLERS["CAL_FLE"]    = CalFleXmlReport
+    PRECINCT_HANDLERS["CAL_FHE"]    = CalFheXmlReport
+    PRECINCT_HANDLERS["CAL_ULD"]    = CalUldXmlReport
+    PRECINCT_HANDLERS["CAL_Mode"]   = CalModeXmlReport
+    
 
 
 def makeChildNode(parentNode, childName):
