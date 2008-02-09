@@ -11,8 +11,8 @@ __facility__ = "Online"
 __abstract__ = "Cal precinct report code"
 __author__   = "Z.Fewtrell, based on TkrRegisterChecker by P.A.Hart <philiph@SLAC.Stanford.edu> SLAC - GLAST LAT I&T/Online"
 __date__     = "2008/01/25 00:00:00"
-__updated__  = "$Date: 2008/02/01 02:12:47 $"
-__version__  = "$Revision: 1.2 $"
+__updated__  = "$Date: 2008/02/09 00:34:44 $"
+__version__  = "$Revision: 1.1 $"
 __release__  = "$Name:  $"
 __credits__  = "SLAC"
 
@@ -175,7 +175,7 @@ class CalPrecinctReport(object):
 
     # optional baseline ROOT data
     if baselineRootPath == None:
-      self.__baselineRootPath == None
+      self.__baselineRootPath = None
     else:
       self.__baselineRootPath = baselineRootPath
       self._baselineRootData = PrecinctData(self.__baselineRootPath, precinctName)
