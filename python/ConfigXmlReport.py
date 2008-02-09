@@ -11,8 +11,8 @@ __facility__ = "Online"
 __abstract__ = "MOOT config reporting base classes"
 __author__   = "J. Panetta <panetta@SLAC.Stanford.edu> SLAC - GLAST LAT I&T/Online"
 __date__     = "2008/01/25 00:00:00"
-__updated__  = "$Date: 2008/02/05 22:35:16 $"
-__version__  = "$Revision: 1.7 $"
+__updated__  = "$Date: 2008/02/09 00:34:44 $"
+__version__  = "$Revision: 1.8 $"
 __release__  = "$Name:  $"
 __credits__  = "SLAC"
 
@@ -168,8 +168,9 @@ def makePrecinctHandlers():
     PRECINCT_HANDLERS["ACD_Mode"] = AcdModeXmlReport
     PRECINCT_HANDLERS["ACD_PHA"] = AcdPHAXmlReport
     PRECINCT_HANDLERS["ACD_Veto"] = AcdVetoXmlReport
-    from TimingXmlReport import AcdTimingXmlReport, GnlTimingXmlReport, CalTimingXmlReport, TkrTimingXmlReport
+    from TimingXmlReport import AcdTimingXmlReport, GnlModeXmlReport, GnlTimingXmlReport, CalTimingXmlReport, TkrTimingXmlReport
     PRECINCT_HANDLERS["ACD_Timing"] = AcdTimingXmlReport
+    PRECINCT_HANDLERS["GNL_Mode"] = GnlModeXmlReport
     PRECINCT_HANDLERS["GNL_Timing"] = GnlTimingXmlReport
     PRECINCT_HANDLERS["CAL_Timing"] = CalTimingXmlReport
     PRECINCT_HANDLERS["TKR_Timing"] = TkrTimingXmlReport

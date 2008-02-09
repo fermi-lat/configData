@@ -11,8 +11,8 @@ __facility__ = "Online"
 __abstract__ = "Run root macro, get text"
 __author__   = "P.A.Hart <philiph@SLAC.Stanford.edu> SLAC - GLAST LAT I&T/Online"
 __date__     = "2008/02/01 00:00:00"
-__updated__  = "$Date: 2008/02/06 21:12:38 $"
-__version__  = "$Revision: 1.5 $"
+__updated__  = "$Date: 2008/02/06 23:12:25 $"
+__version__  = "$Revision: 1.6 $"
 __release__  = "$Name:  $"
 __credits__  = "SLAC"
 
@@ -48,6 +48,8 @@ class BasicRootMacroRunner(object):
     for line in lines:
       formattedLine = re.sub(" ", "&nbsp;", line)
       formattedLine = re.sub("font&nbsp;", "font ", formattedLine)
+      formattedLine = re.sub("&nbsp;New", " New", formattedLine)
+      formattedLine = re.sub("&nbsp;color", " color", formattedLine)
       fp.write('%s<br>\n' %(formattedLine))
     fp.close()
     
