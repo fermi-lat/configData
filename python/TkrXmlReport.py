@@ -11,8 +11,8 @@ __facility__ = "Online"
 __abstract__ = "Tkr config reporting classes"
 __author__   = "P.A.Hart <philiph@SLAC.Stanford.edu> SLAC - GLAST LAT I&T/Online"
 __date__     = "2008/01/25 00:00:00"
-__updated__  = "$Date: 2008/02/05 22:37:53 $"
-__version__  = "$Revision: 1.3 $"
+__updated__  = "$Date: 2008/02/09 23:08:11 $"
+__version__  = "$Revision: 1.4 $"
 __release__  = "$Name:  $"
 __credits__  = "SLAC"
 
@@ -58,7 +58,7 @@ class TkrXmlReport(PrecinctXmlReport):
     def shortSummary(self, outputStub="", rebuild=False):
         self.__builtName = FN_SHORTSUM % (outputStub, self.__type)
         if not os.path.exists(self.__builtName) or rebuild:
-            tkrRegisterChecker = TkrRegisterChecker(self.__type, self.__confRootFile, self.__baseRootFile, self.__builtName)
+            tkrRegisterChecker = TkrRegisterChecker(self.__type, self.__confRootFile, self.__baseRootFile, self.__builtName,self.info.alias)
             tkrRegisterChecker.doChecks()
             self.__pngFileInfos = tkrRegisterChecker.makePngs(outputStub)
             tkrRegisterChecker.cleanupRoot()
