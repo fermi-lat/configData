@@ -11,8 +11,8 @@ __facility__ = "Online"
 __abstract__ = "Timing config reporting classes"
 __author__   = "P.A.Hart <philiph@SLAC.Stanford.edu> SLAC - GLAST LAT I&T/Online"
 __date__     = "2008/01/25 00:00:00"
-__updated__  = "$Date: 2008/02/09 00:41:31 $"
-__version__  = "$Revision: 1.3 $"
+__updated__  = "$Date: 2008/02/09 23:08:11 $"
+__version__  = "$Revision: 1.4 $"
 __release__  = "$Name:  $"
 __credits__  = "SLAC"
 
@@ -37,7 +37,7 @@ class TimingXmlReport(PrecinctXmlReport):
         self.addIntent(summary)  # blank intent node for later?
 
         self.shortSummary(self.data.configDir, rebuild=True) ## rebuild for now
-        self.includeText(summary, self.__builtName, nLines=30, isHtml=True)
+        self.includeText(summary, self.__builtName, isHtml=True)
         self.addComment(summary, "empty comment")
 
     def shortSummary(self, outputStub="", rebuild=False):
