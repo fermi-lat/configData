@@ -11,8 +11,8 @@ __facility__ = "Online"
 __abstract__ = "Cal precinct report code"
 __author__   = "Z.Fewtrell, based on TkrRegisterChecker by P.A.Hart <philiph@SLAC.Stanford.edu> SLAC - GLAST LAT I&T/Online"
 __date__     = "2008/01/25 00:00:00"
-__updated__  = "$Date: 2008/02/09 23:09:56 $"
-__version__  = "$Revision: 1.2 $"
+__updated__  = "$Date: 2008/02/11 23:16:54 $"
+__version__  = "$Revision: 1.3 $"
 __release__  = "$Name:  $"
 __credits__  = "SLAC"
 
@@ -295,7 +295,7 @@ class CalPrecinctReport(object):
                      nVals*2, -1*nVals, nVals)
 
     hist.SetXTitle("GCCC")
-    hist.SetYTitle("%s diff (new - old)"%registerName)
+    hist.SetYTitle("%s diff (current - baseline)"%registerName)
     hist.SetMarkerStyle(ROOT.kFullTriangleUp)
     hist.SetMarkerSize(2)
 
