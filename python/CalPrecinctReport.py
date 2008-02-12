@@ -11,8 +11,8 @@ __facility__ = "Online"
 __abstract__ = "Cal precinct report code"
 __author__   = "Z.Fewtrell, based on TkrRegisterChecker by P.A.Hart <philiph@SLAC.Stanford.edu> SLAC - GLAST LAT I&T/Online"
 __date__     = "2008/01/25 00:00:00"
-__updated__  = "$Date: 2008/02/11 23:16:54 $"
-__version__  = "$Revision: 1.3 $"
+__updated__  = "$Date: 2008/02/11 23:18:15 $"
+__version__  = "$Revision: 1.4 $"
 __release__  = "$Name:  $"
 __credits__  = "SLAC"
 
@@ -176,6 +176,7 @@ class CalPrecinctReport(object):
     # optional baseline ROOT data
     if baselineRootPath == None:
       self.__baselineRootPath = None
+      self._baselineRootData = None
     else:
       self.__baselineRootPath = baselineRootPath
       self._baselineRootData = PrecinctData(self.__baselineRootPath, precinctName)
@@ -465,7 +466,8 @@ class CalLACReport(CalPrecinctReport):
       imgList.append(self._genDiffHist("log_acpt", outputDir))
 
     imgList.append(self._genCCCPlot("log_acpt", outputDir))
-    imgList.append(self._genCCCDiff("log_acpt", outputDir))
+    if self._baselineRootData is not None:
+      imgList.append(self._genCCCDiff("log_acpt", outputDir))
     
 
       
@@ -490,7 +492,9 @@ class CalFLEReport(CalPrecinctReport):
       imgList.append(self._genDiffHist("fle_dac", outputDir))
 
     imgList.append(self._genCCCPlot("fle_dac", outputDir))
-    imgList.append(self._genCCCDiff("fle_dac", outputDir))
+    if self._baselineRootData is not None:
+      imgList.append(self._genCCCDiff("fle_dac", outputDir))
+
     return imgList
   
 
