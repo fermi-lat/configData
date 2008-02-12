@@ -11,8 +11,8 @@ __facility__ = "Online"
 __abstract__ = "Cal precinct report code"
 __author__   = "Z.Fewtrell, based on TkrRegisterChecker by P.A.Hart <philiph@SLAC.Stanford.edu> SLAC - GLAST LAT I&T/Online"
 __date__     = "2008/01/25 00:00:00"
-__updated__  = "$Date: 2008/02/11 23:18:15 $"
-__version__  = "$Revision: 1.4 $"
+__updated__  = "$Date: 2008/02/12 13:04:08 $"
+__version__  = "$Revision: 1.5 $"
 __release__  = "$Name:  $"
 __credits__  = "SLAC"
 
@@ -93,6 +93,7 @@ class LATCRootFile:
     rootPath - path to input LATC ROOT file
     """
     import ROOT
+    ROOT.gROOT.SetBatch(True)
     self.__rootFile = ROOT.TFile(rootPath)
     self.__rootTree = self.__rootFile.Get("Config")
     # all LATC root data is in first event
@@ -144,6 +145,7 @@ def _array2hist(title, name, data, maxVal, minVal=0):
   """
   
   import ROOT
+  ROOT.gROOT.SetBatch(True)
   hist = ROOT.TH1S(title,title,maxVal-minVal+1, minVal, maxVal)
 
   import array
@@ -168,6 +170,7 @@ class CalPrecinctReport(object):
 
     # read in root files
     import ROOT
+    ROOT.gROOT.SetBatch(True)
     # path to 'current' LATC ROOT File
     self.__rootDataPath = rootDataPath
     # current LATC register data dictionary
@@ -211,6 +214,7 @@ class CalPrecinctReport(object):
     
     hist.Draw()
     import ROOT
+    ROOT.gROOT.SetBatch(True)
     ROOT.gPad.SaveAs(imgPath)
 
     return imgPath
@@ -337,6 +341,7 @@ class CalPrecinctReport(object):
     caption = title
 
     import ROOT
+    ROOT.gROOT.SetBatch(True)
     import calConstant
     hist = ROOT.TH2S(title, title,
                      calConstant.NUM_GCCC, 0, calConstant.NUM_GCCC,
@@ -418,6 +423,7 @@ class CalPrecinctReport(object):
     caption = title
 
     import ROOT
+    ROOT.gROOT.SetBatch(True)
     hist = ROOT.TH2S(title, title,
                      regInfo.maxVal+1, 0, regInfo.maxVal,
                      regInfo.maxVal+1, 0, regInfo.maxVal)
