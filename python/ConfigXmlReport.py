@@ -11,8 +11,8 @@ __facility__ = "Online"
 __abstract__ = "MOOT config reporting base classes"
 __author__   = "J. Panetta <panetta@SLAC.Stanford.edu> SLAC - GLAST LAT I&T/Online"
 __date__     = "2008/01/25 00:00:00"
-__updated__  = "$Date: 2008/02/09 00:41:31 $"
-__version__  = "$Revision: 1.9 $"
+__updated__  = "$Date: 2008/02/09 23:06:59 $"
+__version__  = "$Revision: 1.10 $"
 __release__  = "$Name:  $"
 __credits__  = "SLAC"
 
@@ -272,6 +272,8 @@ def makePrecinctHandlers():
     # Trigger reports
     from TrgGemXmlReport import TrgGemXmlReport
     PRECINCT_HANDLERS["TRG_GEM"] = TrgGemXmlReport
+    from TrgRoiXmlReport import TrgRoiXmlReport
+    PRECINCT_HANDLERS["TRG_ROI"] = TrgRoiXmlReport
     # Tracker reports
     from TkrXmlReport import TkrModeXmlReport, TkrStripsXmlReport, TkrThreshXmlReport
     PRECINCT_HANDLERS["TKR_Mode"] = TkrModeXmlReport
