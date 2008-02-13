@@ -11,8 +11,8 @@ __facility__ = "Online"
 __abstract__ = "Tkr register checking/comparing code, based on Hiro's work"
 __author__   = "P.A.Hart <philiph@SLAC.Stanford.edu> SLAC - GLAST LAT I&T/Online"
 __date__     = "2008/01/25 00:00:00"
-__updated__  = "$Date: 2008/02/11 22:04:40 $"
-__version__  = "$Revision: 1.7 $"
+__updated__  = "$Date: 2008/02/11 22:58:45 $"
+__version__  = "$Revision: 1.8 $"
 __release__  = "$Name:  $"
 __credits__  = "SLAC"
 
@@ -208,7 +208,7 @@ class TkrRegisterChecker(object):
     if self.__outputFile:
       self.closeOutputFile()
       
-  def ingestRoot(self, base, comp):
+  def ingestRoot(self, comp, base):
     if comp:
       self.rFiles.append(ROOT.TFile(comp))
     if base:
@@ -555,7 +555,7 @@ if __name__ == '__main__':
   if len(sys.argv) == 2:
     fname = str( sys.argv[1] )
     print "open root file:", fname
-    trc = TkrRegisterChecker(precinctName, fname)
+    trc = TkrRegisterChecker(precinctName, fname, alias='sptAlt')
   elif len(sys.argv) == 3:
     fname = str( sys.argv[1] )
     print "open root file:", fname
