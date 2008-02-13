@@ -11,8 +11,8 @@ __facility__ = "Online"
 __abstract__ = "Tkr config reporting classes"
 __author__   = "P.A.Hart <philiph@SLAC.Stanford.edu> SLAC - GLAST LAT I&T/Online"
 __date__     = "2008/01/25 00:00:00"
-__updated__  = "$Date: 2008/02/09 23:08:11 $"
-__version__  = "$Revision: 1.4 $"
+__updated__  = "$Date: 2008/02/11 22:58:46 $"
+__version__  = "$Revision: 1.5 $"
 __release__  = "$Name:  $"
 __credits__  = "SLAC"
 
@@ -21,21 +21,15 @@ import logging
 from ConfigXmlReport import *
 from RootRptGenerator import SystemCommand
 from TkrRegisterChecker import *
-TMP_BASE_ROOT = '/scratch/philiph/offline/offlineConfig/configData/v1r6p2/rhel4_gcc34/MootConfig_5881.root'
-TMP_COMP_ROOT = '/scratch/philiph/offline/offlineConfig/configData/v1r6p2/rhel4_gcc34/MootConfig_5691.root'
 
 FN_SHORTSUM = "%sTKR_%s_shortSum.txt"
 
 class TkrXmlReport(PrecinctXmlReport):
     def __init__(self, precinctInfo, configData, type):
         PrecinctXmlReport.__init__(self, precinctInfo, configData)
-        #print 'in TkrXmlReport init - precinct type is %s' %(type)
         self.__type = type
-##        self.__confRootFile = TMP_COMP_ROOT
-##        self.__baseRootFile = TMP_BASE_ROOT
         self.__confRootFile = configData.configRootFileName()
         self.__baseRootFile = configData.baselineRootFileName()
-        #print 'Analyze base file %s, conf file %s' %(self.__baseRootFile, self.__confRootFile)
         self.__pngFileInfos = []
         
     def createReport(self):
