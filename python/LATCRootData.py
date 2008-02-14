@@ -11,8 +11,8 @@ __facility__ = "Online"
 __abstract__ = "Utilties for reading LATC ROOT files in python"
 __author__   = "Z.Fewtrell"
 __date__     = "2008/01/25 00:00:00"
-__updated__  = "$Date: 2008/02/13 23:26:29 $"
-__version__  = "$Revision: 1.2 $"
+__updated__  = "$Date: 2008/02/14 18:52:52 $"
+__version__  = "$Revision: 1.3 $"
 __release__  = "$Name:  $"
 __credits__  = "SLAC"
 
@@ -128,6 +128,22 @@ PRECINCT_INFO["CAL_Mode"]["config_1"].fieldDict["CALIB_GAIN"] = RegisterFieldInf
 PRECINCT_INFO["CAL_Mode"]["config_1"].fieldDict["CALIB_LE_EN"] = RegisterFieldInfo(4, 1, "Calibration_Enable for low-energy calibration circuit")
 PRECINCT_INFO["CAL_Mode"]["config_1"].fieldDict["CALIB_HE_EN"] = RegisterFieldInfo(5, 1, "Calibration_Enable for high-energy calibration circuit")
 PRECINCT_INFO["CAL_Mode"]["config_1_bcast"].fieldDict = PRECINCT_INFO["CAL_Mode"]["config_1"].fieldDict
+
+PRECINCT_INFO["CAL_Mode"]["ccc_configuration"].fieldDict["DATA_ALMOST_FULL"] = RegisterFieldInfo(0, 7, "FIFO full condition (data)")
+PRECINCT_INFO["CAL_Mode"]["ccc_configuration"].fieldDict["ERROR_ALMOST_FULL"] = RegisterFieldInfo(8, 6, "FIFO full condition (error)")
+PRECINCT_INFO["CAL_Mode"]["ccc_configuration"].fieldDict["DIAG_ALMOST_FULL"] = RegisterFieldInfo(16, 6, "FIFO full condition (summary/diagnostic)")
+PRECINCT_INFO["CAL_Mode"]["ccc_configuration"].fieldDict["LISTEN_MSB"] = RegisterFieldInfo(27, 4, "listen MSB")
+PRECINCT_INFO["CAL_Mode"]["ccc_configuration"].fieldDict["OUTPUT_ENA"] = RegisterFieldInfo(31, 1, "controller output enable")
+PRECINCT_INFO["CAL_Mode"]["ccc_configuration_bcast"].fieldDict = PRECINCT_INFO["CAL_Mode"]["ccc_configuration"].fieldDict
+
+PRECINCT_INFO["CAL_Mode"]["config"].fieldDict["GCRC_PARITY"] = RegisterFieldInfo(0,3, "GCRC Parity (3 bits)")
+PRECINCT_INFO["CAL_Mode"]["config"].fieldDict["GCRC_WRITE_FLAG"] = RegisterFieldInfo(8,8, "GCRC write flag")
+PRECINCT_INFO["CAL_Mode"]["config_bcast"].fieldDict = PRECINCT_INFO["CAL_Mode"]["config"].fieldDict
+
+
+
+
+
 
 
 # associate ROOT typecodes to python standard library array module typecodes
