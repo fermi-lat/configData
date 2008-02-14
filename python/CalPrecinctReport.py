@@ -11,8 +11,8 @@ __facility__ = "Online"
 __abstract__ = "Cal precinct report code"
 __author__   = "Z.Fewtrell, based on TkrRegisterChecker by P.A.Hart <philiph@SLAC.Stanford.edu> SLAC - GLAST LAT I&T/Online"
 __date__     = "2008/01/25 00:00:00"
-__updated__  = "$Date: 2008/02/14 18:52:52 $"
-__version__  = "$Revision: 1.9 $"
+__updated__  = "$Date: 2008/02/14 20:53:14 $"
+__version__  = "$Revision: 1.10 $"
 __release__  = "$Name:  $"
 __credits__  = "SLAC"
 
@@ -513,7 +513,10 @@ class CalModeReport(CalPrecinctReport):
         
       # loop through all fields in register
     else:
-      for (fieldName, fieldInfo) in regInfo.fieldDict.iteritems():
+      # sort fields by bit order in register
+      fieldList = list(regInfo.fieldDict.iteritems())
+      fieldList.sort(cmp=lambda x, y :cmp(x[1].minBit, y[1].minBit))
+      for (fieldName,fieldInfo) in fieldList:
         txtRpt += "%s\t%s\t%s\t%s\t%s\t%s\n"%(self._precinctName,
                                                 regName.ljust(20),
                                                 ("0x%x"%regVal).ljust(12),
@@ -566,7 +569,12 @@ class CalModeReport(CalPrecinctReport):
         
         # loop through all fields in register
       else:
-        for (fieldName, fieldInfo) in regInfo.fieldDict.iteritems():
+        # sort fields by bit order in register
+        fieldList = list(regInfo.fieldDict.iteritems())
+        fieldList.sort(cmp=lambda x, y :cmp(x[1].minBit, y[1].minBit))
+        for (fieldName,fieldInfo) in fieldList:
+          fieldInfo = regInfo.fieldDict[fieldName]
+
           fieldVal = fieldInfo.extractVal(regVal)
           bcastFieldVal = fieldInfo.extractVal(bcastVal)
 
