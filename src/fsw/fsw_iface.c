@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------
 // File and Version Information:
-//      $Id: fsw_cdb.cxx,v 1.3 2007/05/24 19:49:03 burnett Exp $
+//      $Id: fsw_iface.c,v 1.1 2008/03/27 00:31:14 echarles Exp $
 //
 // Description:
 //      Base class for converting FSW headers to XML
@@ -21,7 +21,7 @@
 #include "./fsw_iface.h"
 
 // fsw headers
-#include "CDM/CDM_pubdefs.h"
+#include "fsw/CDM/CDM_pubdefs.h"
 
 const void* fsw_get_data( const char* fileName, 
 			  unsigned int option,

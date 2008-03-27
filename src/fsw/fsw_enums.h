@@ -3,7 +3,7 @@
 #define fsw_enums_HH
 //---------------------------------------------------------------------------
 // File and Version Information:
-//      $Id: TrgRoi.h,v 1.3 2007/03/28 21:21:02 kocian Exp $
+//      $Id: fsw_enums.h,v 1.1 2008/03/26 03:15:51 echarles Exp $
 //
 // Description:
 //      Base class for converting FSW headers to XML
@@ -27,7 +27,12 @@
 namespace configData {
 
   namespace fsw_enums {
-    enum CDM_TYPE { INVALID = 0, GFC, HFC, MFC, DFC };
+
+    // These are the FMX schema IDs
+    enum { GFC_SCHEMA_ID = 0xe1,
+	   MFC_SCHEMA_ID = 0xe3,
+	   HFC_SCHEMA_ID = 0xe4,
+	   DFC_SCHEMA_ID = 0xe5 };
   }
 
 }

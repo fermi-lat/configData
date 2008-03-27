@@ -3,7 +3,7 @@
 #define fsw_datum_HH
 //---------------------------------------------------------------------------
 // File and Version Information:
-//      $Id: fsw_datum.h,v 1.1 2008/03/26 03:15:51 echarles Exp $
+//      $Id: fsw_datum.h,v 1.1 2008/03/27 00:30:43 echarles Exp $
 //
 // Description:
 //      Base class for converting FSW headers to XML
@@ -48,6 +48,9 @@ using XERCES_CPP_NAMESPACE_QUALIFIER DOMElement;
 
 namespace configData {
 
+
+  // Base class for managing IO on FSW CDM
+
   class fsw_datum {
    
   public:
@@ -81,8 +84,10 @@ namespace configData {
   private: 
 
     // The name of this datum
-    std::string    m_name;     
+    std::string m_name;     
   }; 
+
+
 
 
   class fsw_datum_mask : public fsw_datum {
