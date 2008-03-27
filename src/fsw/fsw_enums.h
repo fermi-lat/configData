@@ -3,7 +3,7 @@
 #define fsw_enums_HH
 //---------------------------------------------------------------------------
 // File and Version Information:
-//      $Id: fsw_enums.h,v 1.1 2008/03/26 03:15:51 echarles Exp $
+//      $Id: fsw_enums.h,v 1.2 2008/03/27 02:03:11 echarles Exp $
 //
 // Description:
 //      Base class for converting FSW headers to XML
@@ -28,7 +28,7 @@ namespace configData {
 
   namespace fsw_enums {
 
-    // These are the FMX schema IDs
+    /// These are the FMX schema IDs
     enum { GFC_SCHEMA_ID = 0xe1,
 	   MFC_SCHEMA_ID = 0xe3,
 	   HFC_SCHEMA_ID = 0xe4,
