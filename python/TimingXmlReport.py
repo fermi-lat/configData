@@ -11,18 +11,18 @@ __facility__ = "Online"
 __abstract__ = "Timing config reporting classes"
 __author__   = "P.A.Hart <philiph@SLAC.Stanford.edu> SLAC - GLAST LAT I&T/Online"
 __date__     = "2008/01/25 00:00:00"
-__updated__  = "$Date: 2008/02/09 23:08:11 $"
-__version__  = "$Revision: 1.4 $"
+__updated__  = "$Date: 2008/02/11 22:04:40 $"
+__version__  = "$Revision: 1.5 $"
 __release__  = "$Name:  $"
 __credits__  = "SLAC"
 
-import logging
+import logging, os
 
 from ConfigXmlReport import *
 from RootRptGenerator import SystemCommand
 from BasicRootMacroRunner import *
 
-FN_SHORTSUM = "%s%s_shortSum.txt"
+FN_SHORTSUM = "%s_shortSum.txt"
 
 class TimingXmlReport(PrecinctXmlReport):
     def __init__(self, precinctInfo, configData):
@@ -30,18 +30,18 @@ class TimingXmlReport(PrecinctXmlReport):
         self.__precinctName = precinctInfo.getPrecinct()
         self.__confRootFile = configData.configRootFileName()
         
-    def createReport(self):
+    def createReport(self, rebuild=False):
         self.createHeader()
         summary = self.addSection("%s_Summary" %(self.__precinctName))
 
         self.addIntent(summary)  # blank intent node for later?
 
-        self.shortSummary(self.data.configDir, rebuild=True) ## rebuild for now
+        self.shortSummary(self.path, rebuild)
         self.includeText(summary, self.__builtName, isHtml=True)
         self.addComment(summary, "empty comment")
 
-    def shortSummary(self, outputStub="", rebuild=False):
-        self.__builtName = FN_SHORTSUM % (outputStub, self.__precinctName)
+    def shortSummary(self, path, rebuild=False):
+        self.__builtName = os.path.join(self.path, FN_SHORTSUM % (self.__precinctName))
         if not os.path.exists(self.__builtName) or rebuild:
             macroRunner = BasicRootMacroRunner(self.__precinctName, self.__confRootFile, self.__builtName)
             macroRunner.doChecks()
