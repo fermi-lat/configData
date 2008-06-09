@@ -11,8 +11,8 @@ __facility__ = "Online"
 __abstract__ = "MOOT config reporting tool"
 __author__   = "J. Panetta <panetta@SLAC.Stanford.edu> SLAC - GLAST LAT I&T/Online"
 __date__     = "2008/01/25 00:00:00"
-__updated__  = "$Date: 2008/01/31 21:22:54 $"
-__version__  = "$Revision: 1.1 $"
+__updated__  = "$Date: 2008/02/08 00:09:58 $"
+__version__  = "$Revision: 1.2 $"
 __release__  = "$Name:  $"
 __credits__  = "SLAC"
 
@@ -63,19 +63,19 @@ class SystemCommand(subprocess.Popen):
         return out, err
     
 
-def genLatcRoot(configKey, outputStub="", rebuild=False):
+def genLatcRoot(configKey, path, rebuild=False):
     "!@brief given a configuration key, generate the root repr for later processing"
-    builtName = FN_XML2ROOT % (outputStub, configKey)
+    builtName = FN_XML2ROOT % (path, configKey)
     if not os.path.exists(builtName) or rebuild:
-        cmd = SystemCommand(CMD_XML2ROOT % (outputStub, configKey))
+        cmd = SystemCommand(CMD_XML2ROOT % (path, configKey))
         cmd.handle()
     return builtName
 
-def compareLatcRoot(configRootName, baselineName, outputStub="", rebuild=False):
+def compareLatcRoot(configRootName, baselineName, path, rebuild=False):
     "!@brief given two file names, run through offline comparator"
-    builtName = FN_COMPLATC % (outputStub)
+    builtName = FN_COMPLATC % path
     if not os.path.exists(builtName) or rebuild:
-        cmd = SystemCommand(CMD_COMPLATC % (outputStub, configRootName, baselineName))
+        cmd = SystemCommand(CMD_COMPLATC % (path, configRootName, baselineName))
         cmd.handle()
     return builtName
     
