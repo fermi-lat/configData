@@ -11,7 +11,7 @@ __facility__ = "Online"
 __abstract__ = "MOOT config reporting base classes"
 __author__   = "J. Panetta <panetta@SLAC.Stanford.edu> SLAC - GLAST LAT I&T/Online"
 __date__     = "2008/01/25 00:00:00"
-__updated__  = "$Date: 2008/01/31 21:22:54 $"
+__updated__  = "$Date: 2008/02/09 23:04:08 $"
 __version__  = "$Revision: 1.1 $"
 __release__  = "$Name:  $"
 __credits__  = "SLAC"
@@ -26,7 +26,7 @@ class LciXmlReport(PrecinctXmlReport):
     def __init__(self, precinctInfo, configData):
         PrecinctXmlReport.__init__(self, precinctInfo, configData)
 
-    def createReport(self):
+    def createReport(self, rebuild=False):
         logging.debug("Creating report for %s" % self.info.getPrecinct())
         self.createHeader()
         summary = self.addSection("LCI_File")
@@ -34,12 +34,3 @@ class LciXmlReport(PrecinctXmlReport):
         self.includeText(summary, lciFile)
         self.addComment(summary, "empty comment")
 
-
-
-
-def shortSummary(configKey, outputStub="", rebuild=False):
-    builtName = FN_SHORTSUM % (outputStub)
-    if not os.path.exists(builtName) or rebuild:
-        cmd = SystemCommand(CMD_SHORTSUM % (builtName, configKey))
-        cmd.handle()
-    return builtName
