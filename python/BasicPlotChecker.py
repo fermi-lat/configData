@@ -11,15 +11,15 @@ __facility__ = "Online"
 __abstract__ = "Just grab some subsystem config plots and make png files"
 __author__   = "P.A.Hart <philiph@SLAC.Stanford.edu> SLAC - GLAST LAT I&T/Online"
 __date__     = "2008/02/01 00:00:00"
-__updated__  = "$Date: 2008/02/01 23:50:31 $"
-__version__  = "$Revision: 1.2 $"
+__updated__  = "$Date: 2008/02/06 20:38:23 $"
+__version__  = "$Revision: 1.3 $"
 __release__  = "$Name:  $"
 __credits__  = "SLAC"
 
 #
 #
 
-import ROOT
+import ROOT, os
 
 class BasicPlotChecker(object):
   def __init__(self, precinctName, compareRootFile, baseRootFile=None, configurationRootFile=None, outputFile=None):
@@ -58,7 +58,7 @@ class BasicPlotChecker(object):
     if self.__outputFile:
       self.closeOutputFile()
       
-  def makePngs(self, outputStub):
+  def makePngs(self, path):
     ## for the moment put all ROOT objects here because of garbage collection issue
     if self.__compareRootFile is not None:
       compRootFile = ROOT.TFile(self.__compareRootFile) 
@@ -71,7 +71,7 @@ class BasicPlotChecker(object):
 ##      baseRootFile.ls()
     
     self.plotInfos = []
-    self.__outputStub = outputStub
+    self.__filePath = path
     for (precinct, plot, title, caption, option) in self.plotSelection:
       if self.__precinctName == precinct or self.__precinctName == 'all':
         if option == 'comp' and self.__compareRootFile is not None:
@@ -128,7 +128,7 @@ class BasicPlotChecker(object):
       print msg
 
   def savePng(self, name, title, caption):
-    fileName = self.__outputStub + self.__precinctName + "_" + name
+    fileName = os.path.join(self.__filePath, self.__precinctName + "_" + name)
     plotInfo = PlotInfo()
     ROOT.gPad.SaveAs(fileName)
     plotInfo.save(fileName, title, caption)
