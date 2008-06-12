@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------
 // File and Version Information:
-//      $Id: FswEfcSampler.cxx,v 1.3 2007/05/24 19:49:03 burnett Exp $
+//      $Id: FswEfcSampler.cxx,v 1.1 2008/05/30 01:36:14 echarles Exp $
 //
 // Description:
 //      A GEM ROI register class 
@@ -101,6 +101,26 @@ void FswEfcSampler::set(unsigned prescalers[32], unsigned input, unsigned output
   m_inputPrescaler = input;
   m_outputPrescaler = output;
   m_enabled = enabled;
+}
+
+unsigned FswEfcSampler::prescaleFactor(enums::Lsf::RsdState rsdState, enums::Lsf::LeakedPrescaler leakedPrescaler) const {
+  switch ( rsdState ) {
+  case enums::Lsf::VETOED:
+    return 0;
+  case enums::Lsf::PASSED:
+    return 1;
+  case enums::Lsf::IGNORED:
+    return m_inputPrescaler;
+  case enums::Lsf::INVALID:
+    return LSF_INVALID_UINT;
+  case enums::Lsf::SUPPRESSED:
+  case enums::Lsf::LEAKED:
+    if ( leakedPrescaler >= 0 ) { return m_prescalers[leakedPrescaler]; }
+    else if ( leakedPrescaler == enums::Lsf::OUTPUT ) { return m_outputPrescaler; }
+    else if ( leakedPrescaler == enums::Lsf::INPUT ) { return m_inputPrescaler; }
+    break;
+  }
+  return LSF_INVALID_UINT;  
 }
 
 
