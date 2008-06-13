@@ -11,9 +11,9 @@ __facility__ = "Online"
 __abstract__ = "Timing config reporting classes"
 __author__   = "P.A.Hart <philiph@SLAC.Stanford.edu> SLAC - GLAST LAT I&T/Online"
 __date__     = "2008/01/25 00:00:00"
-__updated__  = "$Date: 2008/02/11 22:04:40 $"
-__version__  = "$Revision: 1.5 $"
-__release__  = "$Name:  $"
+__updated__  = "$Date: 2008/06/09 23:45:42 $"
+__version__  = "$Revision: 1.6 $"
+__release__  = "$Name: v1r10p2 $"
 __credits__  = "SLAC"
 
 import logging, os

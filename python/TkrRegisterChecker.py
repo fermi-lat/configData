@@ -11,9 +11,9 @@ __facility__ = "Online"
 __abstract__ = "Tkr register checking/comparing code, based on Hiro's work"
 __author__   = "P.A.Hart <philiph@SLAC.Stanford.edu> SLAC - GLAST LAT I&T/Online"
 __date__     = "2008/01/25 00:00:00"
-__updated__  = "$Date: 2008/02/13 03:58:19 $"
-__version__  = "$Revision: 1.9 $"
-__release__  = "$Name:  $"
+__updated__  = "$Date: 2008/06/09 23:44:24 $"
+__version__  = "$Revision: 1.10 $"
+__release__  = "$Name: v1r10p2 $"
 __credits__  = "SLAC"
 
 #

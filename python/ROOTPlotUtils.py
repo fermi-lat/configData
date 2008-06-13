@@ -11,9 +11,9 @@ __facility__ = "Online"
 __abstract__ = "PyROOT based plotting utilties"
 __author__   = "Z. Fewtrell"
 __date__     = "2008/01/25 00:00:00"
-__updated__  = "$Date: 2008/02/14 18:52:52 $"
-__version__  = "$Revision: 1.2 $"
-__release__  = "$Name:  $"
+__updated__  = "$Date: 2008/02/14 23:14:56 $"
+__version__  = "$Revision: 1.3 $"
+__release__  = "$Name: v1r10p2 $"
 __credits__  = "SLAC"
 
 import ROOT

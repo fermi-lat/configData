@@ -11,9 +11,9 @@ __facility__ = "Online"
 __abstract__ = "Run root macro, get text"
 __author__   = "P.A.Hart <philiph@SLAC.Stanford.edu> SLAC - GLAST LAT I&T/Online"
 __date__     = "2008/02/01 00:00:00"
-__updated__  = "$Date: 2008/02/06 23:12:25 $"
-__version__  = "$Revision: 1.6 $"
-__release__  = "$Name:  $"
+__updated__  = "$Date: 2008/02/09 00:41:31 $"
+__version__  = "$Revision: 1.7 $"
+__release__  = "$Name: v1r10p2 $"
 __credits__  = "SLAC"
 
 #

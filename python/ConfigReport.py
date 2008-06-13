@@ -11,9 +11,9 @@ __facility__ = "Online"
 __abstract__ = "MOOT config reporting base classes"
 __author__   = "J. Panetta <panetta@SLAC.Stanford.edu> SLAC - GLAST LAT I&T/Online"
 __date__     = "2008/01/25 00:00:00"
-__updated__  = "$Date: 2008/02/09 23:06:16 $"
-__version__  = "$Revision: 1.6 $"
-__release__  = "$Name:  $"
+__updated__  = "$Date: 2008/06/09 23:52:08 $"
+__version__  = "$Revision: 1.7 $"
+__release__  = "$Name: v1r10p2 $"
 __credits__  = "SLAC"
 
 import logging

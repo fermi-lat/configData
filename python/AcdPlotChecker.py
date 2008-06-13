@@ -11,9 +11,9 @@ __facility__ = "Online"
 __abstract__ = "Just grab some subsystem config plots and make png files"
 __author__   = "P.A.Hart <philiph@SLAC.Stanford.edu> SLAC - GLAST LAT I&T/Online"
 __date__     = "2008/02/01 00:00:00"
-__updated__  = "$Date: 2008/02/01 22:50:54 $"
-__version__  = "$Revision: 1.1 $"
-__release__  = "$Name:  $"
+__updated__  = "$Date: 2008/02/08 00:09:58 $"
+__version__  = "$Revision: 1.2 $"
+__release__  = "$Name: v1r10p2 $"
 __credits__  = "SLAC"
 
 #

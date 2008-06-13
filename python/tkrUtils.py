@@ -11,9 +11,9 @@ __facility__ = "Online"
 __abstract__ = "utilities from Hiro"
 __author__   = "P.A.Hart <philiph@SLAC.Stanford.edu> SLAC - GLAST LAT I&T/Online"
 __date__     = "2008/01/25 00:00:00"
-__updated__  = "$Date: 2008/02/01 02:08:26 $"
-__version__  = "$Revision: $"
-__release__  = "$Name:  $"
+__updated__  = "$Date: 2008/02/01 02:12:47 $"
+__version__  = "$Revision: 1.2 $"
+__release__  = "$Name: v1r10p2 $"
 __credits__  = "SLAC"
 
 import os, glob, xml.dom.minidom, math, time, sys, cStringIO
