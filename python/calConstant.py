@@ -10,7 +10,7 @@ __abstract__      = "Global calorimeter constant values"
 __author__        = "D.L. Wood"
 __date__          = "$Date: 2008/02/13 20:21:12 $"
 __version__       = "$Revision: 1.2 $, $Author: fewtrell $"
-__release__       = "$Name: v1r10p2 $"
+__release__       = "$Name:  $"
 __credits__       = "NRL code 7650"
 
 

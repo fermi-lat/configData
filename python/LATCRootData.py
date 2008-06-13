@@ -13,7 +13,7 @@ __author__   = "Z.Fewtrell"
 __date__     = "2008/01/25 00:00:00"
 __updated__  = "$Date: 2008/02/14 23:14:56 $"
 __version__  = "$Revision: 1.4 $"
-__release__  = "$Name: v1r10p2 $"
+__release__  = "$Name:  $"
 __credits__  = "SLAC"
 
 

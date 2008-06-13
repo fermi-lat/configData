@@ -13,7 +13,7 @@ __author__   = "P.A.Hart <philiph@SLAC.Stanford.edu> SLAC - GLAST LAT I&T/Online
 __date__     = "2008/02/01 00:00:00"
 __updated__  = "$Date: 2008/02/09 00:41:31 $"
 __version__  = "$Revision: 1.7 $"
-__release__  = "$Name: v1r10p2 $"
+__release__  = "$Name:  $"
 __credits__  = "SLAC"
 
 #

@@ -13,7 +13,7 @@ __author__   = "Z. Fewtrell based on TkrXmlReport by P.A.Hart <philiph@SLAC.Stan
 __date__     = "2008/01/25 00:00:00"
 __updated__  = "$Date: 2008/06/09 23:45:42 $"
 __version__  = "$Revision: 1.3 $"
-__release__  = "$Name: v1r10p2 $"
+__release__  = "$Name:  $"
 __credits__  = "SLAC"
 
 import logging, os
