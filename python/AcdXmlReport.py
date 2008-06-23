@@ -11,8 +11,8 @@ __facility__ = "Online"
 __abstract__ = "ACD config reporting classes"
 __author__   = "P.A.Hart <philiph@SLAC.Stanford.edu> SLAC - GLAST LAT I&T/Online"
 __date__     = "2008/01/25 00:00:00"
-__updated__  = "$Date: 2008/06/09 23:45:42 $"
-__version__  = "$Revision: 1.5 $"
+__updated__  = "$Date: 2008/06/13 18:54:27 $"
+__version__  = "$Revision: 1.7 $"
 __release__  = "$Name:  $"
 __credits__  = "SLAC"
 
@@ -81,3 +81,19 @@ class AcdTimingXmlReport(AcdXmlReport):
 class AcdVetoXmlReport(AcdXmlReport):
     def __init__(self, precinctInfo, configData):
         AcdXmlReport.__init__(self, precinctInfo, configData)
+
+
+if __name__ == '__main__':
+    from ConfigReport import *
+    configKey = 100
+    baseKey   = 136
+
+    cr = ConfigDataHolder(configKey, baseKey, './')
+    pInfo = cr.precinctInfo['ACD_Bias']
+    pInfo.alias = 'nomGSFC'
+
+    tr = AcdBiasXmlReport(pInfo, cr)
+    tr.createReport()
+    pR = tr.writeReport(force=True)
+
+    transformToFile(CONFIG_XSL_TRANSFORM, pR, pR[:-3]+'html')
