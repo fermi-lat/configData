@@ -11,8 +11,8 @@ __facility__ = "Online"
 __abstract__ = "MOOT config reporting base classes"
 __author__   = "J. Panetta <panetta@SLAC.Stanford.edu> SLAC - GLAST LAT I&T/Online"
 __date__     = "2008/01/25 00:00:00"
-__updated__  = "$Date: 2008/06/13 18:54:27 $"
-__version__  = "$Revision: 1.9 $"
+__updated__  = "$Date: 2008/06/23 22:20:34 $"
+__version__  = "$Revision: 1.10 $"
 __release__  = "$Name:  $"
 __credits__  = "SLAC"
 
@@ -136,8 +136,8 @@ class PrecinctReport(ReportBase):
             for anc in self.info.ancillaries:
                 relDir = "".join([relDir, "+%s-%s" % (anc.getClass(), anc.getKey())])
             self.__path = os.path.join(baseDir,relDir)
-            if not os.path.exists(self.__path):
-                os.makedirs(self.__path)
+        if not os.path.exists(self.__path):
+            os.makedirs(self.__path)
         return self.__path
         
     @property
@@ -210,7 +210,8 @@ class ConfigDataHolder(object):
                 raise ConfigReportError("Non-integer (or coercable to integer) config key %s is disallowed"%configKey)
         cInfo = self.db.getConfigInfo(key)
         # attach FSW constituent information
-        cInfo.fswConstituents = set(self.db.constituentInfoBySbs(int(cInfo.getSbsKey())))
+        #cInfo.fswConstituents = set(self.db.constituentInfoBySbs(int(cInfo.getSbsKey())))
+        cInfo.fswConstituents = set(self.db.constituentInfoBySbs(6906))
         # attach FSW uploadables (LATC/LCI files)
         cInfo.fswInputs = set(self.db.configFswInfo(key))
         # attach parameter file info (LATC fragments)

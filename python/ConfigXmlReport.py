@@ -11,8 +11,8 @@ __facility__ = "Online"
 __abstract__ = "MOOT config reporting base classes"
 __author__   = "J. Panetta <panetta@SLAC.Stanford.edu> SLAC - GLAST LAT I&T/Online"
 __date__     = "2008/01/25 00:00:00"
-__updated__  = "$Date: 2008/06/13 18:54:27 $"
-__version__  = "$Revision: 1.14 $"
+__updated__  = "$Date: 2008/06/23 22:20:34 $"
+__version__  = "$Revision: 1.15 $"
 __release__  = "$Name:  $"
 __credits__  = "SLAC"
 
@@ -247,6 +247,13 @@ class ConfigXmlReport(XmlReport, ConfigReport):
     def addPrecincts(self, rebuild):
         self.__getAliases()
         precsNode = makeChildNode(self.rootNode, TAG_PRECINCTS)
+        # The heritage report was requested to be first
+        heritage = PRECINCT_HANDLERS['Heritage'](self.data)
+        heritage.createReport()
+        rptName = heritage.writeReport(rebuild)
+        self.addLink(precsNode, rptName, "Heritage Report")
+        self.__precRpts.append(rptName)
+        # Loop over all precincts, alphabetically
         pSet = self.data.precinctInfo
         pKeys = pSet.keys()
         pKeys.sort()
@@ -256,19 +263,14 @@ class ConfigXmlReport(XmlReport, ConfigReport):
                 handler = PRECINCT_HANDLERS[pInfo.getPrecinct()]
             else:
                 handler = PRECINCT_HANDLERS['DEFAULT']
-            #print 'jhpDebug', pInfo.alias, pInfo.getPrecinct(), [p.getSrc() for p in pInfo.ancillaries]
             pRpt = handler(pInfo, self.data)
             pRpt.createReport(rebuild)
             rptName = pRpt.writeReport(rebuild)
             self.addLink(precsNode, rptName, "Precinct: %s;  Alias: %s"%(pInfo.getPrecinct(), pInfo.alias))
             self.__precRpts.append(rptName)
-        heritage = PRECINCT_HANDLERS['Heritage'](self.data)
-        heritage.createReport()
-        rptName = heritage.writeReport(rebuild)
-        self.addLink(precsNode, rptName, "Heritage Report")
-        self.__precRpts.append(rptName)
 
     def __getAliases(self):
+        # determine the set of precinct info aliases.
         votePath = self.data.db.getVoteInfo(int(self.data.configInfo.getVoteKey())).getSrc()
         confPath = os.path.join(os.environ['MOOT_ARCHIVE'], votePath)
         tmp,confDoc = openXmlFileByName(confPath)
