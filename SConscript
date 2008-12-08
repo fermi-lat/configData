@@ -1,7 +1,7 @@
 # -*- python -*-
-# $Header: /nfs/slac/g/glast/ground/cvs/GlastRelease-scons/configData/SConscript,v 1.1 2008/08/15 21:22:46 ecephas Exp $
+# $Header: /nfs/slac/g/glast/ground/cvs/GlastRelease-scons/configData/SConscript,v 1.2 2008/08/25 20:24:56 ecephas Exp $
 # Authors: M. Kocian <kocian@slac.stanford.edu>
-# Version: configData-01-10-04
+# Version: configData-01-10-02
 Import('baseEnv')
 Import('listFiles')
 Import('packages')
@@ -33,4 +33,6 @@ progEnv.Tool('registerObjects', package = 'configData', libraries = [configData]
 	     binaries = [ConfigXml2Root,RootConfigCompare,findConfigs,
 			 dumpGemConfiguration,testdb],
 	     includes = listFiles(['configData/*'], recursive = 1))
+
+
 
