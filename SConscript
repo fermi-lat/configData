@@ -1,5 +1,5 @@
 # -*- python -*-
-# $Header: /nfs/slac/g/glast/ground/cvs/GlastRelease-scons/configData/SConscript,v 1.2 2008/08/25 20:24:56 ecephas Exp $
+# $Header: /nfs/slac/g/glast/ground/cvs/GlastRelease-scons/configData/SConscript,v 1.4 2009/01/23 00:06:54 ecephas Exp $
 # Authors: M. Kocian <kocian@slac.stanford.edu>
 # Version: configData-01-10-03
 Import('baseEnv')
@@ -10,9 +10,10 @@ libEnv = baseEnv.Clone()
 
 libEnv.Tool('configDataLib', depsOnly = 1)
 
-configData = libEnv.SharedLibrary('configData', listFiles(['src/*.cxx','src/gem/*.cxx',
-	'src/fsw/*.cxx','src/base/*.cxx','src/db/*.cxx']))
-
+configData = libEnv.SharedLibrary('configData',
+                                  listFiles(['src/*.cxx','src/gem/*.cxx',
+                                             'src/fsw/*.cxx','src/base/*.cxx',
+                                             'src/db/*.cxx']))
 
 progEnv.Tool('configDataLib')
 
@@ -28,10 +29,12 @@ dumpGemConfiguration = progEnv.Program('dumpGemConfiguration',['apps/dumpGemConf
 testdb = progEnv.Program('testdb',['apps/testdb.cxx'])
 test_configData = progEnv.Program('test_configData',['src/test/test_configData.cxx'])
 
-progEnv.Tool('registerObjects', package = 'configData', libraries = [configData],
-	     testApps = [test_configData],
-	     binaries = [ConfigXml2Root,RootConfigCompare,findConfigs,
-			 dumpGemConfiguration,testdb],
+progEnv.Tool('registerTargets', package = 'configData',
+             libraryCxts = [[configData, libEnv]],
+	     testAppCxts = [[test_configData, progEnv]],
+	     binaryCxts =[[ConfigXml2Root,progEnv],[RootConfigCompare,progEnv],
+                          [findConfigs,progEnv],[dumpGemConfiguration,progEnv],
+                           [testdb,progEnv]],
 	     includes = listFiles(['configData/*'], recursive = 1))
 
 
