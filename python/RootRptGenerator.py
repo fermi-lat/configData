@@ -11,8 +11,8 @@ __facility__ = "Online"
 __abstract__ = "MOOT config reporting tool"
 __author__   = "J. Panetta <panetta@SLAC.Stanford.edu> SLAC - GLAST LAT I&T/Online"
 __date__     = "2008/01/25 00:00:00"
-__updated__  = "$Date: 2008/06/09 23:46:42 $"
-__version__  = "$Revision: 1.3 $"
+__updated__  = "$Date: 2008/06/13 18:54:27 $"
+__version__  = "$Revision: 1.5 $"
 __release__  = "$Name:  $"
 __credits__  = "SLAC"
 
@@ -23,8 +23,8 @@ import os
 _log = logging.getLogger()
 
 # system commands we are using inside SystemCommand
-CMD_XML2ROOT = "ConfigXml2Root.exe -M -o %s %d"  # (outputStub, configKey)
-CMD_COMPLATC = "RootConfigCompare.exe -f -r -o %s %s %s"  # (outputStub, configName, baselineName)
+CMD_XML2ROOT = "ConfigXml2Root -M -o %s %d"  # (outputStub, configKey)
+CMD_COMPLATC = "RootConfigCompare -f -r -o %s %s %s"  # (outputStub, configName, baselineName)
 
 # file name formats for above commands
 FN_XML2ROOT  = "%sMootConfig_%d.root"  # (outputStub, configKey)

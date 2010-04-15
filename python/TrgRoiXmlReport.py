@@ -11,8 +11,8 @@ __facility__ = "Online"
 __abstract__ = "MOOT config reporting base classes"
 __author__   = "J. Panetta <panetta@SLAC.Stanford.edu> SLAC - GLAST LAT I&T/Online"
 __date__     = "2008/01/25 00:00:00"
-__updated__  = "$Date: 2008/06/09 23:45:42 $"
-__version__  = "$Revision: 1.2 $"
+__updated__  = "$Date: 2008/06/13 18:54:27 $"
+__version__  = "$Revision: 1.4 $"
 __release__  = "$Name:  $"
 __credits__  = "SLAC"
 
@@ -22,7 +22,7 @@ from difflib import context_diff
 from ConfigXmlReport import *
 from RootRptGenerator import SystemCommand
 
-CMD_SHORTSUM = "dumpGemConfiguration.exe -r -m -M -o %s %d" # (outputStub, configKey)
+CMD_SHORTSUM = "dumpGemConfiguration -r -m -M -o %s %d" # (outputStub, configKey)
 FN_SHORTSUM = "TRG_ROI_shortSum_%d.txt"
 FN_SHORTDIFF = "TRG_ROI_shortDiff.txt"
 
