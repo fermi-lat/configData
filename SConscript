@@ -1,5 +1,5 @@
 # -*- python -*-
-# $Header: /nfs/slac/g/glast/ground/cvs/configData/SConscript,v 1.8 2010/06/11 00:43:13 jrb Exp $
+# $Header: /nfs/slac/g/glast/ground/cvs/configData/SConscript,v 1.9 2010/06/12 22:42:48 jrb Exp $
 # Authors: M. Kocian <kocian@slac.stanford.edu>
 # Version: configData-01-11-01
 Import('baseEnv')
@@ -38,7 +38,8 @@ progEnv.Tool('registerTargets', package = 'configData',
 	     binaryCxts =[[ConfigXml2Root,progEnv],[RootConfigCompare,progEnv],
                           [findConfigs,progEnv],[dumpGemConfiguration,progEnv],
                            [testdb,progEnv]],
-	     includes = listFiles(['configData/*'], recursive = 1))
+	     includes = listFiles(['configData/*'], recursive = 1),
+	     xml = ['xml/defaultTrgConfig.xml'])
 
 
 
