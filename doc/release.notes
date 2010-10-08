@@ -4,6 +4,7 @@
  * package manager:M. Kocian
  * EOH *
 
+ configData-01-11-02-gr01 06-Oct-2010 hmk Upgrade Gaudi v21r7 along branch
  configData-01-11-02 06-Sep-2010    jrb get test program to run again
  configData-01-11-01 12-Jun-2010    jrb upgrades for SCons builds
  configData-01-11-00 15-Apr-2010 panetta Allow ULong64_t trg_csr
