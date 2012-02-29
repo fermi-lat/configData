@@ -1,5 +1,5 @@
 # -*- python -*-
-# $Header: /nfs/slac/g/glast/ground/cvs/configData/SConscript,v 1.13 2012/01/11 20:58:58 jrb Exp $
+# $Header: /nfs/slac/g/glast/ground/cvs/GlastRelease-scons/configData/SConscript,v 1.14 2012/01/23 19:30:34 jrb Exp $
 # Authors: M. Kocian <kocian@slac.stanford.edu>
 # Version: configData-01-11-05
 Import('baseEnv')
@@ -18,16 +18,29 @@ configData = libEnv.SharedLibrary('configData',
 progEnv.Tool('configDataLib')
 
 if baseEnv['PLATFORM'] != 'win32':
-	progEnv.AppendUnique(CCFLAGS = ['-Wno-unused-parameter'])
+    progEnv.AppendUnique(CCFLAGS = ['-Wno-unused-parameter'])
 
 
+if baseEnv['PLATFORM'] != 'win32':
+    ConfigXml2Root = progEnv.Program('ConfigXml2Root',
+				     ['apps/ConfigXml2Root.cxx'])
+    RootConfigCompare = progEnv.Program('RootConfigCompare',
+					['apps/RootConfigCompare.cxx'])
+    findConfigs = progEnv.Program('findConfigs',['apps/findConfigs.cxx'])
+    dumpGemConfiguration=progEnv.Program('dumpGemConfiguration',
+					 ['apps/dumpGemConfiguration.cxx'])
+else:
+    XGetoptObj = '#/lib/' + baseEnv['VARIANT'] + '/XGetopt.obj'
+    ConfigXml2Root = progEnv.Program('ConfigXml2Root',
+				     ['apps/ConfigXml2Root.cxx', XGetoptObj])
+    RootConfigCompare=progEnv.Program('RootConfigCompare',
+				      ['apps/RootConfigCompare.cxx',XGetoptObj])
+    findConfigs = progEnv.Program('findConfigs',
+				  ['apps/findConfigs.cxx', XGetoptObj])
+    dumpGemConfiguration=progEnv.Program('dumpGemConfiguration',
+					 ['apps/dumpGemConfiguration.cxx',
+					  XGetoptObj])
 
-ConfigXml2Root = progEnv.Program('ConfigXml2Root',['apps/ConfigXml2Root.cxx'])
-RootConfigCompare = progEnv.Program('RootConfigCompare',
-				    ['apps/RootConfigCompare.cxx'])
-findConfigs = progEnv.Program('findConfigs',['apps/findConfigs.cxx'])
-dumpGemConfiguration = progEnv.Program('dumpGemConfiguration',
-				       ['apps/dumpGemConfiguration.cxx'])
 testdb = progEnv.Program('testdb',['apps/testdb.cxx'])
 test_configData = progEnv.Program('test_configData',
 				  ['src/test/test_configData.cxx'])
