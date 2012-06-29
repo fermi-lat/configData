@@ -1,5 +1,5 @@
 # -*- python -*-
-# $Header: /nfs/slac/g/glast/ground/cvs/configData/SConscript,v 1.17 2012/06/28 21:50:21 jrb Exp $
+# $Header: /nfs/slac/g/glast/ground/cvs/GlastRelease-scons/configData/SConscript,v 1.18 2012/06/28 21:52:03 jrb Exp $
 # Authors: M. Kocian <kocian@slac.stanford.edu>
 # Version: configData-01-11-07
 Import('baseEnv')
@@ -22,8 +22,6 @@ if baseEnv['PLATFORM'] != 'win32':
 
 
 if baseEnv['PLATFORM'] != 'win32':
-    if baseEnv['COMPILERNAME'] == 'gcc44':
-        progEnv.Tool('addLibrary', library = ['uuid'])
     ConfigXml2Root = progEnv.Program('ConfigXml2Root',
 				     ['apps/ConfigXml2Root.cxx'])
     RootConfigCompare = progEnv.Program('RootConfigCompare',
