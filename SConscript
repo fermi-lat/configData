@@ -1,7 +1,7 @@
 # -*- python -*-
-# $Header: /nfs/slac/g/glast/ground/cvs/configData/SConscript,v 1.20 2012/06/29 22:35:16 jrb Exp $
+# $Header: /nfs/slac/g/glast/ground/cvs/configData/SConscript,v 1.21 2012/08/17 19:00:36 jrb Exp $
 # Authors: M. Kocian <kocian@slac.stanford.edu>
-# Version: configData-01-12-00
+# Version: configData-01-13-00
 Import('baseEnv')
 Import('listFiles')
 Import('packages')
